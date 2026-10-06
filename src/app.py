@@ -1,8 +1,8 @@
 import pandas as pd
 import streamlit as st
 
-from src.config import ONEHOT_COLS
-from src.load import load_model
+from config import ONEHOT_COLS
+from load import load_model
 
 st.set_page_config(page_title="Review Recommender", page_icon="👗")
 
