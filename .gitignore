@@ -9,4 +9,4 @@ wheels/
 # Virtual environments
 .venv
 data/
-mlflow.db
+mlruns.db
