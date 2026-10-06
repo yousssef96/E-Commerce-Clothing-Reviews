@@ -1,6 +1,4 @@
-Here is the updated `README.md` with the live Streamlit app link added to the top header badges and a dedicated **Live Demo** section:
 
-```markdown
 # 🛍 E-Commerce Clothing Reviews Analysis & Sentiment Classification
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://e-commerce-clothing-reviews-4hs7nwvmqcapvrvr5ctfyn.streamlit.app/)
