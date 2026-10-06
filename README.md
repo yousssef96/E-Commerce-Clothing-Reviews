@@ -1,6 +1,5 @@
-Here is the updated `README.md` with the live Streamlit app link added to the top header badges and a dedicated **Live Demo** section:
 
-```markdown
+
 # 🛍 E-Commerce Clothing Reviews Analysis & Sentiment Classification
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://e-commerce-clothing-reviews-4hs7nwvmqcapvrvr5ctfyn.streamlit.app/)
@@ -10,11 +9,49 @@ Here is the updated `README.md` with the live Streamlit app link added to the to
 ![uv](https://img.shields.io/badge/uv-Package_Manager-DE5B8D?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
-An end-to-end Machine Learning and Natural Language Processing (NLP) system built on the **Women's E-Commerce Clothing Reviews** dataset. This project processes customer text reviews along with structured ratings and categorical metadata to accurately predict customer recommendations and sentiment.
 
-The project features a modular architecture, hyperparameter-tuned Scikit-Learn/Transformer pipelines, an automated retraining script for CI/CD runners, and an interactive **Streamlit** dashboard.
+This repository provides an end-to-end sentiment classification pipeline using the **Women's Clothing E-Commerce Reviews** dataset. The goal of the project is to predict whether a customer recommends a product (`Recommended IND`) based on their text feedback.
+
+The repository compares two distinct modeling paradigms:
+
+1. **Classical ML Baseline**: TF-IDF Feature Extraction + Logistic Regression
+2. **Deep Transfer Learning**: Fine-tuned DistilBERT (`distilbert-base-uncased`) via PyTorch
+
+
 
 ---
+
+## Modeling Experiments Summary
+
+### 1. Classical Baseline: TF-IDF + Logistic Regression
+
+* **Preprocessing**: Text cleaning, stop-word removal, and n-gram TF-IDF vectorization ($1\text{ to }2$-grams).
+* **Model**: Logistic Regression with $L_2$ regularization.
+* **Key Advantages**: Near-instantaneous training and inference, negligible memory footprint, fully deterministic, and easily interpretable feature weights (top words driving recommendation/rejection).
+
+### 2. Deep Learning: DistilBERT Transfer Learning
+
+* **Architecture**: Pretrained `distilbert-base-uncased` with custom binary sequence classification head.
+* **Strategy**: Frozen transformer backbone with trainable `pre_classifier` and `classifier` dense layers (~592K trainable parameters).
+* **Training**: 5 epochs using PyTorch custom training loops, `Adam` optimizer, and `CrossEntropyLoss`.
+* **Key Advantages**: Captures complex semantic context, negation, and subtle subtext in customer reviews.
+
+---
+
+
+
+## Model Evaluation & Production Selection
+
+| Metric / Dimension | Logistic Regression (Selected for Serving) | DistilBERT (Fine-Tuned) |
+| --- | --- | --- |
+| **Validation / Test Accuracy** | ~88.2% | ~88.9% |
+| **Hardware Requirements** | Lightweight CPU | GPU recommended for lower latency |
+| **Maintenance & Interpretability** | High (coefficients direct features) | Black-box embeddings |
+
+
+---
+
+
 
 ## 🌐 Live Demo
 
@@ -60,7 +97,7 @@ e-commerce-clothing-reviews/
 
 * **Language:** Python 3.12+
 * **Environment & Package Manager:** [`uv`](https://github.com/astral-sh/uv)
-* **Data & Modeling:** Pandas, NumPy, Scikit-Learn, LightGBM, PyTorch / Hugging Face Transformers
+* **Data & Modeling:** Pandas, NumPy, Scikit-Learn, PyTorch / Hugging Face Transformers
 * **Visualization & Serving:** Streamlit, Matplotlib, Seaborn
 * **Serialization:** Joblib
 
