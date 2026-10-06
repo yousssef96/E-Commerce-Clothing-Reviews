@@ -10,3 +10,5 @@ wheels/
 .venv
 data/
 mlruns.db
+mlruns/
+logs/

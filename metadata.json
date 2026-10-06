@@ -1,0 +1,25 @@
+{
+    "model_name": "clothing_review_recommender",
+    "model_version": "1.0.0",
+    "algorithm": "LogisticRegression",
+    "dataset": "Womens Clothing E-Commerce Reviews",
+    "feature_count": 10,
+    "target_names": "Recommended IND",
+    "training_date_utc": "2026-10-06T14:02:40.016606",
+    "best_params": {
+        "classifier__C": "1.5375920235481764",
+        "classifier__class_weight": "None",
+        "classifier__penalty": "l2",
+        "preprocess__text_clean_pipeline__tfidf__max_features": "10000",
+        "preprocess__text_clean_pipeline__tfidf__min_df": "5",
+        "preprocess__text_clean_pipeline__tfidf__ngram_range": "(1, 2)",
+        "preprocess__text_clean_pipeline__tfidf__sublinear_tf": "False"
+    },
+    "test_metrics": {
+        "accuracy": 0.888275557518216,
+        "precision": 0.9041130456724703,
+        "recall": 0.9660285791318415,
+        "f1": 0.9340458811261731,
+        "roc_auc": 0.9266563204860951
+    }
+}
