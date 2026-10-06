@@ -1,5 +1,10 @@
 import pandas as pd
 import streamlit as st
+import sys
+from pathlib import Path
+
+# Add project root directory to sys.path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from src.config import ONEHOT_COLS
 from src.load import load_model
